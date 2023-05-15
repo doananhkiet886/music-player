@@ -1,0 +1,143 @@
+body {
+    display: flex;
+    justify-content: center;
+    /* background-color: #F5F5F5; */
+    background-color: #888;
+}
+
+.app {
+    width: 100%;
+    max-width: 480px;
+}
+
+.dashboard {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    max-width: 480px;    
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard__header {
+    text-align: center;
+}
+
+.dashboard__slogan {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.dashboard__song-name {
+    font-size: 2.0rem;
+    margin-top: 16px;
+}
+
+.dashboard__cd {
+    margin: 28px auto 0;
+}
+
+.dashboard__thumbnail {
+    width: 200px;
+    padding-top: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.dashboard__control {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+}
+
+.btn-play-pause {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    color: var(--white-color);
+}
+
+.btn-repeat--active,
+.btn-random--active {
+    color: var(--primary-color);
+}
+
+.play-icon,
+.pause-icon {
+    display: none;
+}
+
+.play-icon--show,
+.pause-icon--show {
+    display: inline;
+}
+
+.dashboard__progress {
+    margin-top: 16px;
+    --webkit-appearance: none;
+    background-color: #E0E0E0;
+    appearance: none;
+    height: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.dashboard__progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--primary-color);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.playlist {
+    width: 480px;
+    margin-top: 420px;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--white-color);
+    padding: 10px 10px 10px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.song-item__thumbnail {
+    width: 50px;
+    padding-top: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.song-item__title {
+    margin-left: 24px;
+}
+
+.song-item__name {
+    font-size: 1.4rem;
+}
+
+.song-item__singer {
+    margin-top: 4px;
+    color: #777;
+}
+
+.options {
+    margin-left: auto;
+    padding: 10px;
+    font-size: 1.8rem;
+    color: #777;
+}
+

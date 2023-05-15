@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #F05123;
+    --white-color: #fff;
+    --text-color: #333;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+.btn {
+    font-size: 18px;
+    padding: 12px;
+    color: #666666;
+    cursor: pointer;
+}
+
+
+
