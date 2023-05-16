@@ -94,7 +94,7 @@ const app = {
     },
 
     nextSong: function () {
-        _this.currentIndex++;
+        this.currentIndex++;
         if (this.currentIndex >= this.songs.length) {
             this.currentIndex = 0;
         }
@@ -107,7 +107,7 @@ const app = {
             newIndex = Math.floor(Math.random() * this.songs.length);
         } while (newIndex === this.currentIndex)
         this.currentIndex = newIndex;
-        this.loadCurrentSon();
+        this.loadCurrentSong();
     },
 
     handleEvents: function () {
@@ -179,7 +179,11 @@ const app = {
 
         // handle click next song
         nextBtn.onclick = function () {
-            _this.nextSong();
+            if (_this.isRandom) {
+                _this.randomSong();
+            } else {
+                _this.nextSong();
+            }
             audio.play();
         }
 
