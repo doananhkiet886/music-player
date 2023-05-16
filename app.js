@@ -10,8 +10,8 @@
  * 9. Repeat song -> OK
  * 10. Random song -> OK
  * 11. Next song when song ends -> OK
- * 12. Scroll down make cd is zoom in or zoom out
- * 13. Makeup song is playing on playlist
+ * 12. Scroll down make cd is zoom in or zoom out -> OK
+ * 13. Markup song is playing on playlist
  */
 
 const $ = document.querySelector.bind(document);

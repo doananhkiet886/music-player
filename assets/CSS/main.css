@@ -112,6 +112,10 @@ body {
     cursor: pointer;
 }
 
+.song-item--active {
+    background-image: linear-gradient(147deg, var(--primary-color) 0%, #FFE53B 100%);
+}
+
 .song-item__thumbnail {
     width: 50px;
     padding-top: 100%;
@@ -123,6 +127,12 @@ body {
 
 .song-item__title {
     margin-left: 24px;
+}
+
+.song-item--active .song-item__name,
+.song-item--active .song-item__singer,
+.song-item--active .options {
+    color: var(--white-color);
 }
 
 .song-item__name {
