@@ -20,6 +20,7 @@ const $$ = document.querySelectorAll.bind(document);
 const app = {
     isPlaying: false,
     isRepeat: false,
+    isRandom: false,
     currentIndex: 0,
     songs: [
         {
@@ -84,6 +85,15 @@ const app = {
         audio.src = this.currentSong.path;
     },
 
+    randomSong: function () {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * this.songs.length);
+        } while (newIndex === this.currentIndex)
+        this.currentIndex = newIndex;
+        this.loadCurrentSong;
+    },
+
     handleEvents: function () {
         const _this = this
         const btnPlayPause = $('.btn-play-pause');
@@ -95,6 +105,7 @@ const app = {
         const previousBtn = $('.btn-prev');
         const nextBtn = $('.btn-next');
         const repeatBtn = $('.btn-repeat');
+        const randomBtn = $('.btn-random');
 
         // handle playing/pause song
         btnPlayPause.onclick = function () {
@@ -145,10 +156,14 @@ const app = {
             if (_this.isRepeat) {
                 audio.load();
             } else {
-                _this.currentIndex--;
-                if (_this.currentIndex < 0) {
-                    _this.currentIndex = _this.songs.length - 1;
-                }     
+                if (_this.isRandom) {
+                    _this.randomSong();
+                } else {
+                    _this.currentIndex--;
+                    if (_this.currentIndex < 0) {
+                        _this.currentIndex = _this.songs.length - 1;
+                    }     
+                }
                 _this.loadCurrentSong();
             }
             audio.play();
@@ -168,7 +183,7 @@ const app = {
             audio.play();
         }
 
-        // handle click repeat song
+        // handle repeat song
         repeatBtn.onclick = function () {
             repeatBtn.classList.toggle('btn-repeat--active');
             if (_this.isRepeat) {
@@ -177,6 +192,13 @@ const app = {
                 _this.isRepeat = true;
             }
         }
+
+        //handle random song
+        randomBtn.onclick = function () {
+            _this.isRandom = !_this.isRandom;
+            randomBtn.classList.toggle('btn-random--active');
+        }
+
     },
 
     start: function () {
