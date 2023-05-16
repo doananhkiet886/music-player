@@ -72,7 +72,7 @@ const app = {
     renderHTML: function () {
         const html = this.songs.map(function (song, index) {
             return `
-                <li class="song-item">
+                <li class="song-item" data-index="${index}">
                     <div class="song-item__cd">
                         <div class="song-item__thumbnail"
                         style="background-image: url('${song.img}')">
@@ -101,6 +101,7 @@ const app = {
         songName.innerText = this.currentSong.name;
         songThumbnail.style.backgroundImage = `url('${this.currentSong.img}')`;
         audio.src = this.currentSong.path;
+        console.log(this.currentSong.path);
     },
 
     previousSong: function () {
@@ -126,6 +127,17 @@ const app = {
         } while (newIndex === this.currentIndex)
         this.currentIndex = newIndex;
         this.loadCurrentSong();
+    },
+
+    markupSongIsplaying: function () {
+        const songItems = $$('.song-item');
+        songItems.forEach(function (songItem) {
+            if (songItem.dataset.index == app.currentIndex) {
+                songItem.classList.add('song-item--active');
+            } else {
+                songItem.classList.remove('song-item--active');
+            }
+        });
     },
 
     handleEvents: function () {
@@ -191,8 +203,9 @@ const app = {
             if (_this.isRandom) {
                 _this.randomSong();
             } else {
-                _this.previousSong()
+                _this.previousSong();
             }
+            _this.markupSongIsplaying();
             audio.play();
         }
 
@@ -203,6 +216,7 @@ const app = {
             } else {
                 _this.nextSong();
             }
+            _this.markupSongIsplaying();
             audio.play();
         }
 
@@ -221,6 +235,7 @@ const app = {
         // handle when song ends
         audio.onended = function () {
             if (!_this.isRepeat) {
+                _this.markupSongIsplaying();
                 _this.nextSong();
             }
             audio.play();
@@ -235,16 +250,13 @@ const app = {
             }
             cdThumbnail.style.width = newWidth + 'px';
         }
-
-        // handle markup current song is active
-
-
     },
 
     start: function () {
         this.defineProperties();
         this.renderHTML();
         this.loadCurrentSong();
+        this.markupSongIsplaying();
         this.handleEvents();
     }
 }
