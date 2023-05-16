@@ -7,7 +7,7 @@
  * 6. Progress bar -> OK
  * 7. Play previous song -> OK
  * 8. Play next song -> OK
- * 9. Repeat song
+ * 9. Repeat song -> OK
  * 10. Random song
  * 11. Next song when song ends
  * 12. Scroll down make cd is shrink and disappear; vice versa
@@ -19,6 +19,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 const app = {
     isPlaying: false,
+    isRepeat: false,
     currentIndex: 0,
     songs: [
         {
@@ -41,16 +42,16 @@ const app = {
         },
     ],
 
-    defineProperties: function() {
+    defineProperties: function () {
         Object.defineProperty(this, 'currentSong', {
-            get: function() {
+            get: function () {
                 return this.songs[this.currentIndex];
             }
         })
     },
 
     renderHTML: function () {
-        const html = this.songs.map(function(song, index) {
+        const html = this.songs.map(function (song, index) {
             return `
                 <li class="song-item">
                     <div class="song-item__cd">
@@ -73,17 +74,17 @@ const app = {
         $('.song-list').innerHTML = html;
     },
 
-    loadCurrentSong: function() {
+    loadCurrentSong: function () {
         const songName = $('.dashboard__song-name');
         const songThumbnail = $('.dashboard__thumbnail');
         const audio = $('.audio');
 
         songName.innerText = this.currentSong.name;
-        songThumbnail.style.backgroundImage = `url('${this.currentSong.img}')`; 
-        audio.src = this.currentSong.path;  
+        songThumbnail.style.backgroundImage = `url('${this.currentSong.img}')`;
+        audio.src = this.currentSong.path;
     },
 
-    handleEvents: function() {
+    handleEvents: function () {
         const _this = this
         const btnPlayPause = $('.btn-play-pause');
         const playIcon = $('.play-icon');
@@ -93,22 +94,23 @@ const app = {
         const progress = $('.dashboard__progress');
         const previousBtn = $('.btn-prev');
         const nextBtn = $('.btn-next');
+        const repeatBtn = $('.btn-repeat');
 
         // handle playing/pause song
-        btnPlayPause.onclick = function() {
+        btnPlayPause.onclick = function () {
             if (_this.isPlaying) {
                 audio.pause();
-            } else {   
+            } else {
                 audio.play();
-            }   
+            }
         };
-        audio.onplay = function() {
-            playIcon.classList.remove('play-icon--show');      
+        audio.onplay = function () {
+            playIcon.classList.remove('play-icon--show');
             pauseIcon.classList.add('pause-icon--show');
             cdThumbnailAnimate.play()
             _this.isPlaying = true;
         };
-        audio.onpause = function() {
+        audio.onpause = function () {
             pauseIcon.classList.remove('pause-icon--show');
             playIcon.classList.add('play-icon--show');
             cdThumbnailAnimate.pause();
@@ -117,7 +119,7 @@ const app = {
 
         // handle rotate cd thumbnail
         const cdThumbnailAnimate = cdThumbnail.animate([
-            {transform: 'rotate(360deg)'}
+            { transform: 'rotate(360deg)' }
         ], {
             duration: 10000,
             iterations: Infinity
@@ -125,39 +127,56 @@ const app = {
         cdThumbnailAnimate.pause();
 
         // handle progress bar when the song progress changes
-        audio.ontimeupdate = function() {
+        audio.ontimeupdate = function () {
             const currentTimePercent = this.currentTime / this.duration * 100;
             if (currentTimePercent) {
-                progress.value = currentTimePercent;         
+                progress.value = currentTimePercent;
             }
         };
 
         // handle progress bar when drag
-        progress.onchange = function() {
+        progress.onchange = function () {
             const currentMiliseconds = progress.value * audio.duration / 100;
             audio.currentTime = currentMiliseconds;
         }
 
         // handle click previous song
-        previousBtn.onclick = function() {
-            _this.currentIndex--;
-            if (_this.currentIndex < 0) {
-                _this.currentIndex = _this.songs.length - 1;
+        previousBtn.onclick = function () {
+            if (_this.isRepeat) {
+                audio.load();
+            } else {
+                _this.currentIndex--;
+                if (_this.currentIndex < 0) {
+                    _this.currentIndex = _this.songs.length - 1;
+                }     
+                _this.loadCurrentSong();
             }
-            _this.loadCurrentSong();
-            audio.play();
-        }
-        
-        // handle click next song
-        nextBtn.onclick = function() {
-            _this.currentIndex++;
-            if (_this.currentIndex >= _this.songs.length) {
-                _this.currentIndex = 0;
-            }
-            _this.loadCurrentSong();
             audio.play();
         }
 
+        // handle click next song
+        nextBtn.onclick = function () {
+            if (_this.isRepeat) {
+                audio.load();
+            } else {
+                _this.currentIndex++;
+                if (_this.currentIndex >= _this.songs.length) {
+                    _this.currentIndex = 0;
+                }
+                _this.loadCurrentSong();
+            }
+            audio.play();
+        }
+
+        // handle click repeat song
+        repeatBtn.onclick = function () {
+            repeatBtn.classList.toggle('btn-repeat--active');
+            if (_this.isRepeat) {
+                _this.isRepeat = false;
+            } else {
+                _this.isRepeat = true;
+            }
+        }
     },
 
     start: function () {
