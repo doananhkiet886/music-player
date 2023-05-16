@@ -5,12 +5,13 @@
  * 4. Pause song -> OK
  * 5. Rotate cd -> OK
  * 6. Progress bar -> OK
- * 7. Play previous song
- * 8. Play next song
+ * 7. Play previous song -> OK
+ * 8. Play next song -> OK
  * 9. Repeat song
  * 10. Random song
- * 11. Scroll down make cd is shrink and disappear; vice versa
- * 12. Makeup song is playing on playlist
+ * 11. Next song when song ends
+ * 12. Scroll down make cd is shrink and disappear; vice versa
+ * 13. Makeup song is playing on playlist
  */
 
 const $ = document.querySelector.bind(document);
@@ -90,6 +91,8 @@ const app = {
         const audio = $('.audio');
         const cdThumbnail = $('.dashboard__thumbnail');
         const progress = $('.dashboard__progress');
+        const previousBtn = $('.btn-prev');
+        const nextBtn = $('.btn-next');
 
         // handle playing/pause song
         btnPlayPause.onclick = function() {
@@ -133,6 +136,26 @@ const app = {
         progress.onchange = function() {
             const currentMiliseconds = progress.value * audio.duration / 100;
             audio.currentTime = currentMiliseconds;
+        }
+
+        // handle click previous song
+        previousBtn.onclick = function() {
+            _this.currentIndex--;
+            if (_this.currentIndex < 0) {
+                _this.currentIndex = _this.songs.length - 1;
+            }
+            _this.loadCurrentSong();
+            audio.play();
+        }
+        
+        // handle click next song
+        nextBtn.onclick = function() {
+            _this.currentIndex++;
+            if (_this.currentIndex >= _this.songs.length) {
+                _this.currentSong = 0;
+            }
+            _this.loadCurrentSong();
+            audio.play();
         }
     },
 
