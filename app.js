@@ -11,7 +11,9 @@
  * 10. Random song -> OK
  * 11. Next song when song ends -> OK
  * 12. Scroll down make cd is zoom in or zoom out -> OK
- * 13. Markup song is playing on playlist
+ * 13. Markup song is playing on playlist -> OK
+ * 14. Scroll to song is playing
+ * 15. Click song in playlist to play
  */
 
 const $ = document.querySelector.bind(document);
