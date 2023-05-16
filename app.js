@@ -9,7 +9,7 @@
  * 8. Play next song -> OK
  * 9. Repeat song -> OK
  * 10. Random song -> OK
- * 11. Next song when song ends
+ * 11. Next song when song ends -> OK
  * 12. Scroll down make cd is shrink and disappear; vice versa
  * 13. Makeup song is playing on playlist
  */
@@ -24,7 +24,7 @@ const app = {
     currentIndex: 0,
     songs: [
         {
-            name: 'I do',
+            name: 'I Do',
             singer: '911',
             img: './assets/img/i_do.png',
             path: './assets/music/i_do_911.mp3'
@@ -41,6 +41,24 @@ const app = {
             img: './assets/img/summertime.png',
             path: './assets/music/summertime_lana-del.mp3'
         },
+        {
+            name: '4 Mùa Thương Em',
+            singer: 'Lập Nguyễn',
+            img: './assets/img/4_mua_thuong_em.png',
+            path: './assets/music/4_mua_thuong_em_lap-nguyen.mp3'
+        },
+        {
+            name: 'Đếm Ngày Xa em',
+            singer: 'Only C',
+            img: './assets/img/dem_ngay_xa_em.png',
+            path: './assets/music/dem_ngay_xa_em_only-c.mp3'
+        },
+        {
+            name: 'Ghé Qua',
+            singer: 'Dic & PC & Tofu',
+            img: './assets/img/ghe_qua.png',
+            path: './assets/music/ghe_qua_dic-pc-tofu.mp3'
+        }
     ],
 
     defineProperties: function () {
