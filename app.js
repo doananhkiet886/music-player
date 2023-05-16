@@ -103,7 +103,6 @@ const app = {
         songName.innerText = this.currentSong.name;
         songThumbnail.style.backgroundImage = `url('${this.currentSong.img}')`;
         audio.src = this.currentSong.path;
-        console.log(this.currentSong.path);
     },
 
     previousSong: function () {
@@ -140,6 +139,15 @@ const app = {
                 songItem.classList.remove('song-item--active');
             }
         });
+    },
+
+    scrollToSongIsPlaying: function () {
+        setTimeout(function () {
+            $('.song-item--active').scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }, 300);
     },
 
     handleEvents: function () {
@@ -208,6 +216,7 @@ const app = {
                 _this.previousSong();
             }
             _this.markupSongIsplaying();
+            _this.scrollToSongIsPlaying();
             audio.play();
         }
 
@@ -219,6 +228,7 @@ const app = {
                 _this.nextSong();
             }
             _this.markupSongIsplaying();
+            _this.scrollToSongIsPlaying();
             audio.play();
         }
 
@@ -238,6 +248,7 @@ const app = {
         audio.onended = function () {
             if (!_this.isRepeat) {
                 _this.markupSongIsplaying();
+                _this.scrollToSongIsPlaying();
                 _this.nextSong();
             }
             audio.play();
