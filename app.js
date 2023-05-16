@@ -10,7 +10,7 @@
  * 9. Repeat song -> OK
  * 10. Random song -> OK
  * 11. Next song when song ends -> OK
- * 12. Scroll down make cd is shrink and disappear; vice versa
+ * 12. Scroll down make cd is zoom in or zoom out
  * 13. Makeup song is playing on playlist
  */
 
@@ -129,7 +129,7 @@ const app = {
     },
 
     handleEvents: function () {
-        const _this = this
+        const _this = this;
         const btnPlayPause = $('.btn-play-pause');
         const playIcon = $('.play-icon');
         const pauseIcon = $('.pause-icon');
@@ -140,7 +140,8 @@ const app = {
         const nextBtn = $('.btn-next');
         const repeatBtn = $('.btn-repeat');
         const randomBtn = $('.btn-random');
-
+        const cdThumbnailWidth = cdThumbnail.offsetWidth;
+        
         // handle playing/pause song
         btnPlayPause.onclick = function () {
             if (_this.isPlaying) {
@@ -225,6 +226,16 @@ const app = {
                 _this.nextSong();
             }
             audio.play();
+        }
+
+        // handle scroll down/up make cd thumbnail is zoom in or zoom out
+        document.onscroll = function (e) {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            let newWidth = cdThumbnailWidth - scrollTop;
+            if (newWidth < 0) {
+                newWidth = 0;
+            }
+            cdThumbnail.style.width = newWidth + 'px';
         }
     },
 
