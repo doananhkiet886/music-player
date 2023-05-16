@@ -220,9 +220,7 @@ const app = {
 
         // handle when song ends
         audio.onended = function () {
-            if (_this.isRepeat) {
-                audio.load();
-            } else {
+            if (!_this.isRepeat) {
                 _this.nextSong();
             }
             audio.play();
@@ -237,6 +235,10 @@ const app = {
             }
             cdThumbnail.style.width = newWidth + 'px';
         }
+
+        // handle markup current song is active
+
+
     },
 
     start: function () {
