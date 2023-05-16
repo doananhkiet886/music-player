@@ -163,7 +163,8 @@ const app = {
         const repeatBtn = $('.btn-repeat');
         const randomBtn = $('.btn-random');
         const cdThumbnailWidth = cdThumbnail.offsetWidth;
-        
+        const songList = $('.song-list');
+
         // handle playing/pause song
         btnPlayPause.onclick = function () {
             if (_this.isPlaying) {
@@ -262,6 +263,21 @@ const app = {
                 newWidth = 0;
             }
             cdThumbnail.style.width = newWidth + 'px';
+        }
+
+        // handle click song in playlist to play
+        songList.onclick = function(e) {
+            const songItemNoActiveNode = e.target.closest('.song-item:not(.song-item--active)');
+            const optionsNode = e.target.closest('.options');
+            
+            if (songItemNoActiveNode) {
+                _this.currentIndex = Number(songItemNoActiveNode.dataset.index);
+                _this.markupSongIsplaying();
+                _this.loadCurrentSong();
+                audio.play();
+            } else if (optionsNode) {
+                // code
+            }
         }
     },
 
