@@ -169,26 +169,17 @@ const app = {
 
         // handle click previous song
         previousBtn.onclick = function () {
-            if (_this.isRepeat) {
-                audio.load();
+            if (_this.isRandom) {
+                _this.randomSong();
             } else {
-                if (_this.isRandom) {
-                    _this.randomSong();
-                } else {
-                    _this.previousSong()
-                }
-                _this.loadCurrentSong();
+                _this.previousSong()
             }
             audio.play();
         }
 
         // handle click next song
         nextBtn.onclick = function () {
-            if (_this.isRepeat) {
-                audio.load();
-            } else {
-                _this.nextSong();
-            }
+            _this.nextSong();
             audio.play();
         }
 
