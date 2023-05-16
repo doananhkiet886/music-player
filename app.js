@@ -270,13 +270,17 @@ const app = {
             const songItemNoActiveNode = e.target.closest('.song-item:not(.song-item--active)');
             const optionsNode = e.target.closest('.options');
             
-            if (songItemNoActiveNode) {
+            /**
+             * optionsNode to the top to solve the problem
+             *  of clicking '...' being played to a song
+             */
+            if (optionsNode) {
+                // code for handle options
+            } else if (songItemNoActiveNode) {
                 _this.currentIndex = Number(songItemNoActiveNode.dataset.index);
                 _this.markupSongIsplaying();
                 _this.loadCurrentSong();
                 audio.play();
-            } else if (optionsNode) {
-                // code
             }
         }
     },
