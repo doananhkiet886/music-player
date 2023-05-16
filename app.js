@@ -18,7 +18,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 const app = {
     isPlaying: false,
-    currentIndex: 1,
+    currentIndex: 0,
     songs: [
         {
             name: 'I do',
