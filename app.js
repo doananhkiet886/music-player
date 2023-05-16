@@ -8,7 +8,7 @@
  * 7. Play previous song -> OK
  * 8. Play next song -> OK
  * 9. Repeat song -> OK
- * 10. Random song
+ * 10. Random song -> OK
  * 11. Next song when song ends
  * 12. Scroll down make cd is shrink and disappear; vice versa
  * 13. Makeup song is playing on playlist
@@ -193,12 +193,21 @@ const app = {
             repeatBtn.classList.toggle('btn-repeat--active');
         }
 
-        //handle random song
+        // handle random song
         randomBtn.onclick = function () {
             _this.isRandom = !_this.isRandom;
             randomBtn.classList.toggle('btn-random--active');
         }
 
+        // handle when song ends
+        audio.onended = function () {
+            if (_this.isRepeat) {
+                audio.load();
+            } else {
+                _this.nextSong();
+            }
+            audio.play();
+        }
     },
 
     start: function () {
