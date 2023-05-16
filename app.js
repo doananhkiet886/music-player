@@ -152,11 +152,12 @@ const app = {
         nextBtn.onclick = function() {
             _this.currentIndex++;
             if (_this.currentIndex >= _this.songs.length) {
-                _this.currentSong = 0;
+                _this.currentIndex = 0;
             }
             _this.loadCurrentSong();
             audio.play();
         }
+
     },
 
     start: function () {
