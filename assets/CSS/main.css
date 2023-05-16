@@ -2,7 +2,9 @@ body {
     display: flex;
     justify-content: center;
     /* background-color: #F5F5F5; */
-    background-color: #888;
+    /* background-color: #888; */
+    background-color: #00DBDE;
+    background-image: linear-gradient(315deg, var(--secondary-color) 0%, var(--primary-color) 100%);    
 }
 
 .app {
@@ -113,7 +115,8 @@ body {
 }
 
 .song-item--active {
-    background-image: linear-gradient(147deg, var(--primary-color) 0%, #FFE53B 100%);
+    /* background-image: linear-gradient(147deg, var(--primary-color) 0%, #FFE53B 100%); */
+    background-image: linear-gradient(30deg, var(--secondary-color) -7%, #9B4DE0 100%);
 }
 
 .song-item__thumbnail {
