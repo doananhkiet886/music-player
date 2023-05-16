@@ -85,13 +85,29 @@ const app = {
         audio.src = this.currentSong.path;
     },
 
+    previousSong: function () {
+        this.currentIndex--;
+        if (this.currentIndex < 0) {
+            this.currentIndex = this.songs.length - 1;
+        }
+        this.loadCurrentSong();
+    },
+
+    nextSong: function () {
+        _this.currentIndex++;
+        if (this.currentIndex >= this.songs.length) {
+            this.currentIndex = 0;
+        }
+        this.loadCurrentSong();
+    },
+
     randomSong: function () {
         let newIndex;
         do {
             newIndex = Math.floor(Math.random() * this.songs.length);
         } while (newIndex === this.currentIndex)
         this.currentIndex = newIndex;
-        this.loadCurrentSong;
+        this.loadCurrentSon();
     },
 
     handleEvents: function () {
@@ -159,10 +175,7 @@ const app = {
                 if (_this.isRandom) {
                     _this.randomSong();
                 } else {
-                    _this.currentIndex--;
-                    if (_this.currentIndex < 0) {
-                        _this.currentIndex = _this.songs.length - 1;
-                    }     
+                    _this.previousSong()
                 }
                 _this.loadCurrentSong();
             }
@@ -174,11 +187,7 @@ const app = {
             if (_this.isRepeat) {
                 audio.load();
             } else {
-                _this.currentIndex++;
-                if (_this.currentIndex >= _this.songs.length) {
-                    _this.currentIndex = 0;
-                }
-                _this.loadCurrentSong();
+                _this.nextSong();
             }
             audio.play();
         }
