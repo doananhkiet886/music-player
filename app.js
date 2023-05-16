@@ -194,12 +194,8 @@ const app = {
 
         // handle repeat song
         repeatBtn.onclick = function () {
+            _this.isRepeat = !_this.isRepeat;
             repeatBtn.classList.toggle('btn-repeat--active');
-            if (_this.isRepeat) {
-                _this.isRepeat = false;
-            } else {
-                _this.isRepeat = true;
-            }
         }
 
         //handle random song
