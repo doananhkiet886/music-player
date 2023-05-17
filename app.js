@@ -193,6 +193,7 @@ const app = {
         const cdThumbnailWidth = cdThumbnail.offsetWidth;
         const songList = $('.song-list');
         const changeThemeBtn = $('.dashboard__theme-btn');
+        const currentTimeNode = $('.dashboard__current-time');
 
         // handle playing/pause song
         btnPlayPause.onclick = function () {
@@ -226,7 +227,11 @@ const app = {
 
         // handle progress bar when the song progress changes
         audio.ontimeupdate = function () {
-            const currentTimePercent = this.currentTime / this.duration * 100;
+            let currentTimeMillis = Math.floor(this.currentTime) * 1000;
+            let date = new Date(currentTimeMillis);
+            currentTimeNode.innerText =  date.toISOString().slice(11, 19);
+            
+            let currentTimePercent = this.currentTime / this.duration * 100;
             if (currentTimePercent) {
                 progress.value = currentTimePercent;
             }
