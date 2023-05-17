@@ -248,9 +248,7 @@ const app = {
         // handle when song ends
         audio.onended = function () {
             if (!_this.isRepeat) {
-                _this.markupSongIsplaying();
-                _this.scrollToSongIsPlaying();
-                _this.nextSong();
+                nextBtn.click();
             }
             audio.play();
         }
