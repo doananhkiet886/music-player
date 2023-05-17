@@ -1,10 +1,7 @@
 body {
     display: flex;
     justify-content: center;
-    /* background-color: #F5F5F5; */
-    /* background-color: #888; */
-    background-color: #00DBDE;
-    background-image: linear-gradient(315deg, var(--secondary-color) 0%, var(--primary-color) 100%);    
+    background-color: rgba(0, 0, 0, 0.02);
 }
 
 .app {
@@ -22,7 +19,7 @@ body {
     flex-direction: column;
     padding: 16px;
     border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1)
 }
 
 .dashboard__header {
@@ -110,7 +107,7 @@ body {
     padding: 10px 10px 10px 20px;
     margin-top: 10px;
     border-radius: 4px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
