@@ -32,12 +32,12 @@
 }
 
 .dashboard__song-name {
-    font-size: 2.0rem;
-    margin-top: 22px;
+    font-size: 2.2rem;
+    margin-top: 16px;
 }
 
 .dashboard__cd {
-    margin: 28px auto 0;
+    margin: 20px auto 0;
 }
 
 .dashboard__thumbnail {
@@ -53,7 +53,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 16px;
+    margin-top: 8px;
 }
 
 .btn-play-pause {
