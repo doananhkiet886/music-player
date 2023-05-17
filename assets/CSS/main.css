@@ -22,8 +22,32 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1)
 }
 
+.dashboard__theme-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    padding: 14px 17px;
+    cursor: pointer;
+}
+
+.dashboard__theme-btn--dark .light-icon {
+    display: inline;
+}
+
+.dashboard__theme-btn--dark .dark-icon {
+    display: none;
+}
+
+.light-icon {
+    display: none;
+}
+
 .dashboard__header {
     text-align: center;
+    position: relative;
 }
 
 .dashboard__slogan {
@@ -117,6 +141,7 @@
 
 .song-item--active {
     background-color: var(--primary-color);
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.35);
 }
 
 .song-item__thumbnail {
