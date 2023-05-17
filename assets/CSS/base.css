@@ -1,8 +1,10 @@
 :root {
     --primary-color: #ED225D;
     --secondary-color: #00DBDE;
+    --dark-color: #221A2D;
     --white-color: #fff;
     --text-color: #333;
+    --background-dark-color: #170F23;
 }
 
 html {

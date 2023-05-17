@@ -23,6 +23,7 @@ const app = {
     isPlaying: false,
     isRepeat: false,
     isRandom: false,
+    themeNumber: 0, // light theme: 0, dark theme: 1
     currentIndex: 0,
     songs: [
         {
@@ -150,6 +151,15 @@ const app = {
         }, 300);
     },
 
+    changeThemeUI: function (themeNumber = 0) {
+        const mainNode = $('.main');
+        if (themeNumber === 0) {
+            mainNode.classList.remove('dark-theme');
+        } else {
+            mainNode.classList.add('dark-theme');
+        }
+    },
+
     handleEvents: function () {
         const _this = this;
         const btnPlayPause = $('.btn-play-pause');
@@ -164,6 +174,7 @@ const app = {
         const randomBtn = $('.btn-random');
         const cdThumbnailWidth = cdThumbnail.offsetWidth;
         const songList = $('.song-list');
+        const changeThemeBtn = $('.dashboard__theme-btn');
 
         // handle playing/pause song
         btnPlayPause.onclick = function () {
@@ -280,6 +291,17 @@ const app = {
                 _this.loadCurrentSong();
                 audio.play();
             }
+        }
+
+        // handle change theme
+        changeThemeBtn.onclick = function(e) {
+            // dark theme
+            if (_this.themeNumber === 0) {
+                _this.themeNumber = 1;       
+            } else {
+                _this.themeNumber = 0;
+            }
+            _this.changeThemeUI(_this.themeNumber);
         }
     },
 

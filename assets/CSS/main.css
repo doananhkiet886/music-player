@@ -4,9 +4,29 @@
     background-color: rgba(0, 0, 0, 0.02);
 }
 
+.main.dark-theme {
+    background-color: var(--background-dark-color);
+}
+
 .app {
     width: 480px;
     max-width: 100%;
+}
+
+.main.dark-theme .dashboard,
+.main.dark-theme .song-item:not(.song-item--active) {
+    background-color: var(--dark-color);
+}
+
+.main.dark-theme .dashboard__song-name,
+.main.dark-theme .btn-repeat:not(.btn-repeat--active),
+.main.dark-theme .btn-prev,
+.main.dark-theme .btn-next,
+.main.dark-theme .btn-random:not(.btn-random--active),
+.main.dark-theme .song-item__name,
+.main.dark-theme .song-item__singer,
+.main.dark-them .options {
+    color: var(--white-color);
 }
 
 .dashboard {
@@ -33,11 +53,11 @@
     cursor: pointer;
 }
 
-.dashboard__theme-btn--dark .light-icon {
+.main.dark-theme .light-icon {
     display: inline;
 }
 
-.dashboard__theme-btn--dark .dark-icon {
+.main.dark-theme .dark-icon {
     display: none;
 }
 
@@ -84,7 +104,7 @@
     background-color: var(--primary-color);
     border-radius: 50%;
     color: var(--white-color);
-    box-shadow: 0 0 24px var(--primary-color);
+    box-shadow: 0 0 14px var(--primary-color);
     font-size: 2.6rem;
     padding: 14px 17px;
 }
