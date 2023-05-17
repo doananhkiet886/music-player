@@ -61,6 +61,24 @@ const app = {
             singer: 'Dic & PC & Tofu',
             img: './assets/img/ghe_qua.png',
             path: './assets/music/ghe_qua_dic-pc-tofu.mp3'
+        },
+        {
+            name: 'Nhạc Chill 1',
+            singer: 'Anonymous',
+            img: './assets/img/nhac_chill_1.png',
+            path: './assets/music/nhac_chill_1.mp3'
+        },
+        {
+            name: 'Nhạc Chill 2',
+            singer: 'Anonymous',
+            img: './assets/img/nhac_chill_2.png',
+            path: './assets/music/nhac_chill_2.mp3'
+        },
+        {
+            name: 'EDM Nhạc Trẻ',
+            singer: 'Anonymous',
+            img: './assets/img/edm_nhac_tre.png',
+            path: './assets/music/edm_nhac_tre.mp3'
         }
     ],
 
