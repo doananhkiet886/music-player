@@ -60,6 +60,8 @@
     border-radius: 50%;
     color: var(--white-color);
     box-shadow: 0 0 24px var(--primary-color);
+    font-size: 2.6rem;
+    padding: 14px 17px;
 }
 
 .btn-repeat--active,
