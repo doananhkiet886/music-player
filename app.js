@@ -79,6 +79,12 @@ const app = {
             singer: 'Anonymous',
             img: './assets/img/edm_nhac_tre.png',
             path: './assets/music/edm_nhac_tre.mp3'
+        },
+        {
+            name: 'Bạn Ơi',
+            singer: 'Myra Trần',
+            img: './assets/img/ban_oi.png',
+            path: './assets/music/ban_oi_myra-tran.mp3'
         }
     ],
 
